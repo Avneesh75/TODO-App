@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block title %}Add Task{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center mt-4">
+    <div class="col-md-6 col-lg-5">
+
+        <div class="card shadow border-0 rounded-4">
+            
+            <!-- Card Header -->
+            <div class="card-header bg-primary text-white text-center rounded-top-4">
+                <h4 class="mb-0">Add Task</h4>
+            </div>
+
+            <!-- Card Body -->
+            <div class="card-body p-4">
+                <form method="post">
+                    {% csrf_token %}
+
+                    <!-- Title -->
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Title</label>
+                        <input 
+                            type="text" 
+                            name="title" 
+                            class="form-control" 
+                            placeholder="Enter task title" 
+                            required>
+                    </div>
+
+                    <!-- Description -->
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Description</label>
+                        <textarea 
+                            name="description" 
+                            class="form-control" 
+                            rows="3" 
+                            placeholder="Enter task description"></textarea>
+                    </div>
+
+                    <!-- Due Date -->
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Due Date</label>
+                        <input 
+                            type="date" 
+                            name="due_date" 
+                            class="form-control">
+                    </div>
+
+                    <!-- Status -->
+                    <div class="mb-4">
+                        <label class="form-label fw-semibold">Status</label>
+                        <select name="status" class="form-select">
+                            <option value="pending">Pending</option>
+                            <option value="completed">Completed</option>
+                        </select>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            Save Task
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Card Footer -->
+            <div class="card-footer text-center bg-white border-0 pb-3">
+                <a href="{% url 'task_list' %}" class="text-decoration-none fw-semibold">
+                    ← Back to Task List
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
